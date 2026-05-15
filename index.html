@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ngủ Ngon Bé Yêu 💖</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      overflow: hidden;
+      height: 100vh;
+      background: linear-gradient(to bottom, #0f172a, #1e1b4b, #312e81);
+      color: white;
+    }
+
+    .screen {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: 1s;
+      padding: 20px;
+    }
+
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(1.1);
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from {
+        opacity: 0.2;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .card {
+      width: 90%;
+      max-width: 650px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 45px 35px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      z-index: 2;
+      animation: floating 4s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .emoji {
+      font-size: 75px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 25px;
+      color: #ffc6e7;
+    }
+
+    p {
+      font-size: 23px;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    button {
+      margin-top: 20px;
+      border: none;
+      padding: 15px 32px;
+      border-radius: 999px;
+      background: #ff4d9d;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 20px rgba(255, 77, 157, 0.4);
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      background: #ff66b3;
+    }
+
+    .heart {
+      color: #ff5c93;
+      display: inline-block;
+      animation: heartbeat 1s infinite;
+    }
+
+    @keyframes heartbeat {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    #loveMessage {
+      margin-top: 25px;
+      font-size: 24px;
+      color: #ffe4f2;
+      min-height: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- sao -->
+  <div class="stars" id="stars"></div>
+
+  <!-- SCREEN 1 -->
+  <section class="screen" id="screen1">
+    <div class="card">
+
+      <div class="emoji">🚶‍♀🌙</div>
+
+      <h1>Anh Đang Đợi Bé</h1>
+
+      <p>
+        Hihi hôm nay anh được xem bé đi về tới nhà luôn này
+      </p>
+
+      <p>
+        Chỉ cần thấy bé về tới nơi an toàn là anh yên tâm rồi
+        <span class="heart">❤</span>
+      </p>
+
+      <p>
+        Dù đêm có muộn thế nào thì anh vẫn muốn đợi bé tới lúc về tới nhà 💖
+      </p>
+
+      <button onclick="nextScreen()">
+        Tiếp tục nè 🥺
+      </button>
+
+    </div>
+  </section>
+
+  <!-- SCREEN 2 -->
+  <section class="screen hidden" id="screen2">
+    <div class="card">
+
+      <div class="emoji">🌙</div>
+
+      <h1>Chúc Bé Ngủ Ngon</h1>
+
+      <p>
+        Anh vẫn đợi bé đi về nhà...
+      </p>
+
+      <p>
+        Dù có muộn thế nào thì anh vẫn muốn thấy bé bình an
+        <span class="heart">❤</span>
+      </p>
+
+      <p>
+        Ngủ thật ngon nha bé yêu của anh 💖
+      </p>
+
+      <button onclick="showMessage()">
+        Bấm vào đây đi nè 🥺
+      </button>
+
+      <div id="loveMessage"></div>
+
+    </div>
+  </section>
+
+  <script>
+
+    // tạo sao
+    const stars = document.getElementById("stars");
+
+    for (let i = 0; i < 160; i++) {
+      const star = document.createElement("div");
+
+      star.classList.add("star");
+
+      star.style.top = Math.random() * 100 + "%";
+      star.style.left = Math.random() * 100 + "%";
+
+      star.style.animationDelay = Math.random() * 3 + "s";
+
+      stars.appendChild(star);
+    }
+
+    // chuyển màn
+    function nextScreen() {
+      document.getElementById("screen1")
+        .classList.add("hidden");
+
+      document.getElementById("screen2")
+        .classList.remove("hidden");
+    }
+
+    // lời nhắn random
+    const messages = [
+      "Anh nhớ bé nhiều lắm 💕",
+      "Nay chắc là anh được theo dõi bé tới khi về nhà rồi 💕",
+      "Anh vẫn luôn ở đây đợi bé 🤍",
+      "Ngủ ngon nha công chúa của anh 👑",
+      "Mai dậy nhớ yêu anh nhiều hơn đó 😘"
+    ];
+
+    function showMessage() {
+
+      const random =
+        messages[Math.floor(Math.random() * messages.length)];
+
+      document.getElementById("loveMessage").innerHTML = random;
+    }
+
+  </script>
+
+</body>
+
+</html>
