@@ -161,8 +161,35 @@
   <!-- sao -->
   <div class="stars" id="stars"></div>
 
-  <!-- SCREEN 1 -->
   <section class="screen" id="screen1">
+    <div class="card">
+
+      <div class="emoji">🚶‍♀🌙</div>
+
+      <h1>Anh xin lỗi vì để bé buồn</h1>
+
+      <p>
+        Thực sự thì anh không nghĩ tới hậu quả của câu nói kia.
+      </p>
+
+      <p>
+        Anh không phải đi ngủ thật mà để deploy cái web và gửi bé thôi
+        <span class="heart">❤</span>
+      </p>
+
+      <p>
+        Anh ngốc khi nghĩ ra cái kịch bản tươi sáng trong đầu. Anh xin bé đừng giận a nữa
+      </p>
+
+      <button onclick="nextScreen()">
+        Bé tha thứ cho anh nhá🥺
+      </button>
+
+    </div>
+  </section>
+
+  <!-- SCREEN 1 -->
+  <section class="screen hidden" id="screen2">
     <div class="card">
 
       <div class="emoji">🚶‍♀🌙</div>
@@ -182,9 +209,38 @@
         Dù đêm có muộn thế nào thì anh vẫn muốn đợi bé tới lúc về tới nhà 💖
       </p>
 
-      <button onclick="nextScreen()">
+      <button onclick="nextScreen2()">
         Tiếp tục nè 🥺
       </button>
+
+    </div>
+  </section>
+
+  <section class="screen hidden" id="screen3">
+    <div class="card">
+
+      <div class="emoji">🌙</div>
+
+      <h1>Chúc Bé Ngủ Ngon</h1>
+
+      <p>
+        Anh vẫn đợi bé đi về nhà...
+      </p>
+
+      <p>
+        Dù có muộn thế nào thì anh vẫn muốn thấy bé bình an
+        <span class="heart">❤</span>
+      </p>
+
+      <p>
+        Ngủ thật ngon nha bé yêu của anh 💖
+      </p>
+
+      <button onclick="showMessage()">
+        Bấm vào đây đi nè 🥺
+      </button>
+
+      <div id="loveMessage"></div>
 
     </div>
   </section>
@@ -243,6 +299,14 @@
         .classList.add("hidden");
 
       document.getElementById("screen2")
+        .classList.remove("hidden");
+    }
+
+    function nextScreen2() {
+      document.getElementById("screen2")
+        .classList.add("hidden");
+
+      document.getElementById("screen3")
         .classList.remove("hidden");
     }
 
